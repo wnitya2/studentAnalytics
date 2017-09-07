@@ -1,0 +1,34 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<zk choose="">
+    <zk when="${sessionScope.userCredential.dbRole != 'Academic Admin'}">    
+    	<vlayout>
+    		<vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+    			<label value="Access Denied."/>
+    			<label value="This feature is only applicable for users with Academic Admin role."/>
+				<image src="/img/access_denied.jpg" />			
+			</vbox>    		
+    	</vlayout>    	
+    </zk>
+    <zk><!-- default -->
+    	<tabbox id="tb" vflex="1" style="padding-top: 5px">
+		    <tabs id="tabs">
+		        <!-- <tab id="uploadFile" label="Upload File" /> -->     
+		        <tab id="manageStudent" label="Manage Student" image="/img/icon/student2.png"/>        
+		    </tabs>
+		    <tabpanels>
+		        <!-- <tabpanel>		
+		        	<include src="/stad_03_data_entry/stad_03_upload_file.zul"/>
+		        </tabpanel> -->
+		        <tabpanel>
+		        	<include src="/stad_03_data_entry/stad_03_manage_student.zul"/>
+		        </tabpanel>        
+		    </tabpanels>
+		</tabbox>
+    </zk>
+</zk>

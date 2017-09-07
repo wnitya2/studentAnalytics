@@ -1,0 +1,170 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="win" apply="" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:auto" >		
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1" vflex="1">
+				<vlayout>
+					<grid height="140px" hflex="1">			
+						<auxhead>
+							<auxheader colspan="2"  label="Search Category"/>						
+						</auxhead>		
+						<columns>
+							<column width="100px"/>
+							<column hflex="1"/>						
+						</columns>		
+						<rows>		
+							<row>               	                
+				                <label value="Matrix No" width="100px"/>
+								<textbox id="matrixBox"  width="200px"/>											
+							</row>
+							<row>
+								<label value="Student Name" width="200px"/>
+								<textbox id="studentNameBox" width="200px"/>																	
+							</row>						
+							<row align="left">
+								<label/>
+								<hlayout>
+									<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+									<button id="searchButton" label="Search" image="/img/icon/search.png"/>						 								
+								</hlayout>					 	
+							</row>	
+						</rows>							
+					</grid>	
+					<div id="searchResultBlock" visible="true">
+						<vlayout>
+							<grid>								
+								<columns>
+									<column label="Code"/>
+									<column label="Course" width="700px"/>
+									<column label="Credit Course"/>
+									<column label="Grade"/>
+								</columns>
+								<rows>		
+									<row spans="4">
+										<label value="Credit Transferred" style="color:red"/>
+									</row>							
+									<row>
+										<label value="MANP1103"/>
+										<label value="SOFTWARE REQUIREMENTS"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row spans="4">Total Credit Transferred:1</row>	
+								</rows>					
+							</grid>
+							<grid>
+								<columns>
+									<column/>
+									<column width="700px"/>
+									<column/>
+									<column/>
+								</columns>
+								<rows>
+									<row spans="4">
+										<label value="Credits Exempted" style="color:red"/>
+									</row>
+									<row>
+										<label value="MANP1103"/>
+										<label value="SOFTWARE REQUIREMENTS"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row spans="4">Total Credit Exempted:1</row>	
+								</rows>
+							</grid>
+								<!-- showing results per semester -->
+							<grid>
+								<columns>
+									<column/>
+									<column width="700px"/>
+									<column/>
+									<column/>
+								</columns>
+								<rows>
+									<row spans="4">
+										<label value="Session 2014/2015 Semester 1" style="color:red"/>
+									</row>
+									<row>										
+										<label value="MANP1103"/>
+										<label value="SOFTWARE REQUIREMENTS"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1153"/>
+										<label value="SOFTWARE DESIGN"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1163"/>
+										<label value="SOFTWARE CONSTRUCTIONS"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1403"/>
+										<label value="SOFTWARE QUALITY ASSURANCE"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1433"/>
+										<label value="SOFTWARE PROJECT &amp; CONFIGURATION MANAGEMENT"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="URSP6023"/>
+										<label value="INFORMATION AND COMMUNICATION"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+								
+									<row spans="4">
+										<label value="Session 2014/2015 Semester 2" style="color:red"/>
+									</row>
+									<row>										
+										<label value="MANP1103"/>
+										<label value="SOFTWARE REQUIREMENTS"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1153"/>
+										<label value="SOFTWARE DESIGN"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1163"/>
+										<label value="SOFTWARE CONSTRUCTIONS"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1403"/>
+										<label value="SOFTWARE QUALITY ASSURANCE"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="MANP1433"/>
+										<label value="SOFTWARE PROJECT &amp; CONFIGURATION MANAGEMENT"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+									<row>										
+										<label value="URSP6023"/>
+										<label value="INFORMATION AND COMMUNICATION"/>
+										<label value="3"/>
+										<label value="A"/>
+									</row>
+								</rows>	 						
+							</grid>		
+						</vlayout>	
+					</div>			
+				</vlayout>					
+			</center>						
+		</borderlayout>
+	</window>

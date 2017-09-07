@@ -1,0 +1,119 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+<window id="win" apply="my.ais.controller.analytics.StudentInfoAnalysisLevel" 
+	border="normal" vflex="1" hflex="1" contentStyle="overflow:visible" >
+	<radiogroup id="rg1"/>	
+	<radiogroup id="rg2"/>	
+	<borderlayout>			
+		<center autoscroll="true" border="none" hflex="1" vflex="1">
+			<vlayout>
+				<hlayout>															
+					<grid id="countryCategoryBlock" visible="true" height="200px" hflex="1">	
+						<auxhead>
+							<auxheader label="Customization of Data Analysis Based on Level of Study" colspan="4"/>
+						</auxhead>		
+						<columns>
+							<column width="120px"/>
+							<column align="left" width="120px"/>
+							<column align="left" width="170px"/>
+							<column align="left"/>
+						</columns>					
+						<rows>						
+							<row>
+								<label value="Country Indicator"/>
+								<radio id="allCountries" label="All Countries" radiogroup="rg1"  checked="true"/>
+								<radio id="localInter" label="Local / International" radiogroup="rg1"/>
+								<hlayout>
+									<radio id="country" label="Specific Country &#160;&#160;" radiogroup="rg1"/>
+									<combobox id="countryCombobox" model="${win$composer.countryModel}"
+					                    autodrop="true" width="250px" disabled="true">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox> 
+								</hlayout>										
+							</row>
+							<row>
+								<label value="Time Indicator"/>
+								<radio id="allYear" label="All Year" radiogroup="rg2" checked="true"/>
+								<hlayout>
+									<radio id="specificYear" label="Specific Year" radiogroup="rg2"/>
+									<textbox id="specificYearTextBox" width="52px"  disabled="true"/>
+								</hlayout>
+								<hlayout>
+									<radio id="specificSemester" label="Specific Semester" radiogroup="rg2"/>
+									<textbox id="specificSemesterTextBox" width="100px"  disabled="true"/>
+								</hlayout>								
+							</row>
+							<row>
+								<label/>
+								<radio id="yearRange" label="Year Range" radiogroup="rg2"/>
+								<cell colspan="2" style="color:#636363">
+									<hlayout>										
+										<textbox id="fromYearTextBox" width="100px" disabled="true"/>
+										<label value="to"/>
+										<textbox id="toYearTextBox" width="100px" disabled="true"/>
+										<label value="e.g. 2013 to 2016"/>
+									</hlayout>
+								</cell>			
+							</row>	
+							<row>
+								<label/>
+								<radio id="semesterRange" label="Semester Range" radiogroup="rg2"/>
+								<cell colspan="2" style="color:#636363">
+									<hlayout>
+									
+									<textbox id="fromSemTextBox" width="100px" disabled="true"/>
+									<label value="to"/>
+									<textbox id="toSemTextBox" width="100px" disabled="true"/>
+									<label value="e.g. 201320141 to 201520162"/>
+								</hlayout>
+								</cell>
+							</row>						
+							<row>
+								<label/>
+								<cell colspan="3">
+									<hlayout>
+										<button id="generateChartButton" label="Generate Chart" image="/img/icon/pie_chart.png"/>
+										<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+									</hlayout>
+								</cell>							
+							</row>
+						</rows>
+					</grid>						
+					<div id="exportBlock" visible="false" width="200px" vflex="1">
+						<grid vflex="1">
+							<columns>
+								<column align="left" hflex="min"/>
+								<column/>
+							</columns>
+							<rows>
+								<row spans="2" sclass="row-title row-header">
+									<label>Export Options</label>
+								</row>
+								<row>
+									<label value="Save as"/>	
+									<button id="pdfButton" label="PDF" image="/img/icon/pdf_17px.png"/>														
+								</row>
+								<row>
+									<label/>
+									<button id="pngButton" label="PNG" image="/img/icon/jpg_17px.jpg"/>													
+								</row>						
+							</rows>
+						</grid>		
+					</div>	
+				</hlayout>
+				
+				<div id="chartBlock1" align="center" visible="false">
+					<image id="chartImage1"></image>					
+				</div>
+				<div id="chartBlock2" align="center" visible="false">
+					<image id="chartImage2"></image>					
+				</div>
+				<div id="chartBlock3" align="center" visible="false">
+					<image id="chartImage3"></image>					
+				</div>
+				
+			</vlayout>
+		</center>						
+	</borderlayout>
+</window>

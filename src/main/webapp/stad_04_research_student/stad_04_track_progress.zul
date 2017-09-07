@@ -1,0 +1,178 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="win" apply="my.ais.controller.studentManagement.ResearchStudentManagementController" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:visible" >
+		<radiogroup id="rg1"/>
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1" vflex="1">
+				<vlayout>	
+					<hlayout hflex="1">						
+						<grid id="researchStatusCategory" height="140px" hflex="1">	
+							<auxhead>
+								<auxheader label="Research Status Category" colspan="5"/>
+							</auxhead>									
+							<columns>
+								<column width="70px"/>
+								<column/>
+								<column/>
+								<column width="100px"/>	
+								<column/>						
+							</columns>												
+							<rows>									
+								<row>
+									<radio id="AllRadio" label="All" radiogroup="rg1" checked="true" hflex="1"/>
+									<radio id="MandatoryCourseRadio" label="Mandatory Course" radiogroup="rg1" hflex="1"/>
+									<combobox id="mandatoryCourseCombobox" autodrop="true" hflex="1" disabled="true">
+										<comboitem label="Done Research Methodology"/>
+										<comboitem label="Done University General"/>
+										<comboitem label="Done All"/>
+					                    <!-- <template name="model">
+					                        <comboitem label="${each.}-${each.}"/>
+					                    </template> -->
+					                </combobox>
+					                <radio id="ColloquiumRadio" label="Colloquium" radiogroup="rg1" hflex="1"/>
+									<combobox id="ColloquiumCombobox" autodrop="true" hflex="1" disabled="true">
+										<comboitem label="Candidate"/>
+										<comboitem label="Done"/>
+					                    <!-- <template name="model">
+					                        <comboitem label="${each.}-${each.}"/>
+					                    </template> -->
+					                </combobox>   
+								</row>								
+								<row>
+									<radio id="InitialRadio" label="Initial" radiogroup="rg1" hflex="1"/>
+									<radio id="FirstAssessmentRadio" label="1st Assessment" radiogroup="rg1" hflex="1"/>
+									<combobox id="FirstAssessmentCombobox" autodrop="true" hflex="1" disabled="true">
+										<comboitem label="Candidate"/>
+										<comboitem label="Done"/>
+					                    <!-- <template name="model">
+					                        <comboitem label="${each.}-${each.}"/>
+					                    </template> -->
+					                </combobox>
+					                <radio id="VivaRadio" label="Viva" radiogroup="rg1" hflex="1"/>
+									<combobox id="VivaCombobox" autodrop="true" hflex="1" disabled="true">
+										<comboitem label="Candidate"/>
+										<comboitem label="Done"/>
+					                    <!-- <template name="model">
+					                        <comboitem label="${each.}-${each.}"/>
+					                    </template> -->
+					                </combobox>																			
+								</row>													
+							</rows>							
+						</grid>	
+						<grid id="additionalStatusCategory" height="140px" hflex="1">	
+							<auxhead>
+								<auxheader label="Additional Search Category" colspan="4"/>
+							</auxhead>	
+							<columns>
+								<column width="70px"/>
+								<column/>
+								<column width="100px"/>
+								<column/>													
+							</columns>
+							<rows>
+								<row>
+									<label value="Level" hflex="1"/>
+									<combobox id="levelCombobox" model="${win$composer.levelModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>	
+					                <label value="Sem Enrolment" hflex="1"/>
+									<textbox id="enrolBox" hflex="1"/>
+								</row>
+								<row>
+									<label value="Program" hflex="1"/>
+									<combobox id="programCombobox" autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each.programId}-${each.programDesc}"/>
+					                    </template>
+					                </combobox>
+					                <label value="Matrix No" hflex="1"/>
+									<textbox id="matrixBox"  hflex="1"/> 
+								</row>
+								<row>
+									<label value="Country" hflex="1"/>
+									<combobox id="countryCombobox" model="${win$composer.countryModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+					                <label value="Student Name" hflex="1"/>
+									<textbox id="studentNameBox" hflex="1"/>
+								</row>							
+							</rows>							
+						</grid>	
+						<div id="exportBlock" visible="false" width="150px" vflex="1">
+							<grid vflex="1">
+								<columns>
+									<column align="left" hflex="min"/>
+									<column/>
+								</columns>
+								<rows>
+									<row spans="2" sclass="row-title row-header">
+										<label>Export Options</label>
+									</row>
+									<row>
+										<label value="Save as"/>	
+										<button id="pdfButton" label="PDF" image="/img/icon/pdf_17px.png"/>														
+									</row>
+									<row>
+										<label/>
+										<button id="xlsButton" label="XLS" image="/img/icon/xls_17px.png"/>													
+									</row>
+									<!-- <row>
+										<label/>
+										<button id="csvButton" label="CSV" image="/img/icon/csv_17px.png"/>			
+									</row> -->						
+								</rows>
+							</grid>		
+						</div>				
+					</hlayout>		
+					<div align="center">
+						<cell align="center"><button id="resetButton" label="Reset" image="/img/icon/reset.png"/></cell>
+						<cell align="center"><button id="searchButton" label="Search" image="/img/icon/search.png"/></cell>						
+					</div>			
+					<div id="searchResultBlock" visible="false">						
+						<listbox id="studentListBox" emptyMessage="No student found in the result" 
+							vflex="1"  mold="paging" pageSize="20" pagingPosition="top">
+							<listhead hflex="1">
+								<listheader label="No" width="35px"/>
+								<listheader label="Matrix No" width="75px" sort="auto(matrixId)"/>								
+								<listheader label="Student Name" width="250px" sort="auto(fullName)"/>
+								<listheader label="Country" width="100px" sort="auto(country)"/>
+								<listheader label="Details" width="70px" align="center"/>
+								<listheader label="Research Methodology" width="150px"/>
+								<listheader label="University General"/>
+								<listheader label="1st Assessment"/>
+								<listheader label="Colloquium"/>
+								<listheader label="Viva"/>
+								<listheader label="Update" width="60px"/>
+							</listhead>
+							<template name="model">
+								<listitem value="${each}">
+									<custom-attributes scope="page" total="${forEachStatus.end}"/>									
+									<listcell label="${forEachStatus.index+1}" style="font-size:x-small"/>
+									<listcell label="${each.matrixId}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.fullName}" hflex="1" style="font-size:x-small" />
+									<listcell label="${each.country}" hflex="1" style="font-size:x-small" />
+									<listcell style="text-align:center">
+										<button forward="onClick=studentListBox.onViewDetail" image="/img/icon/info_16px.png" width="36px" tooltiptext="View Detail"/>										
+									</listcell>	
+									<listcell label="${each.researchStudentProgress.researchMethod}" hflex="1" style="font-size:x-small" />
+									<listcell label="${each.researchStudentProgress.univGeneral}" hflex="1" style="font-size:x-small" />
+									<listcell label="${each.researchStudentProgress.assessment1Status}" hflex="1" style="font-size:x-small" />
+									<listcell label="" hflex="1" style="font-size:x-small" />
+									<listcell label="" hflex="1" style="font-size:x-small" />
+									<listcell style="text-align:center">										
+										<button id="" image="/img/icon/write_16px.png" width="36px" tooltiptext="Edit Detail"/>										
+									</listcell>	
+								</listitem>
+							</template>
+						</listbox>									
+					</div>				
+				</vlayout>				
+			</center>				
+		</borderlayout>
+	</window>

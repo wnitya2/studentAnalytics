@@ -1,0 +1,9 @@
+<grid hflex="1" vflex="1" sclass="sidebar" 
+	id="fnList" 
+	apply="my.ais.controller.menu.SidebarController">
+	<columns>
+		<column width="38px"/>
+		<column/>
+	</columns>
+	<rows/>
+</grid>

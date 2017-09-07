@@ -1,0 +1,181 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="win" apply="my.ais.controller.reporting.TranscriptReportController" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:auto" >		
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1">
+				<vlayout>
+					<hlayout height="120px">
+						<grid height="110px" hflex="1">			
+							<auxhead>
+								<auxheader colspan="2"  label="Search Category"/>						
+							</auxhead>		
+							<columns>
+								<column width="100px"/>
+								<column/>						
+							</columns>		
+							<rows>		
+								<row>               	                
+					                <label value="Matrix No" width="100px"/>
+									<textbox id="matrixBox"  width="200px"/>											
+								</row>										
+								<row align="left">
+									<label/>
+									<hlayout>
+										<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+										<button id="searchButton" label="Search" image="/img/icon/search.png"/>						 								
+									</hlayout>					 	
+								</row>	
+							</rows>							
+						</grid>	
+						<grid id="studentInfoGridCourseWork" height="110px" hflex="3" visible="false">					
+							<auxhead>
+								<auxheader colspan="5"  label="Student Information"/>						
+							</auxhead>
+							<columns>
+								<column align="center" width="300px"><label value="Student Name"></label></column>
+								<column align="center"><label value="Country"></label></column>
+								<column align="center" width="300px"><label value="Program"></label></column>
+								<column align="center"><label value="Total credits"></label></column>
+								<column align="center"><label value="CGPA"></label></column>
+							</columns>
+							
+							<rows>
+							<template name="model">
+								<row align="center">
+									<label value="${each.fullName}"></label>								
+									<label value="${each.country}"></label>
+									<label value="${each.program.programId} - ${each.program.programDesc}"></label>									
+									<label value="${each.totalCredits}"></label>
+									<label value="${each.cgpa}"></label>
+								</row>	
+							</template>																	
+							</rows>																				
+						</grid>
+						<grid id="studentInfoGridResearch" height="110px" hflex="3" visible="false">					
+							<auxhead>
+								<auxheader colspan="3"  label="Student Information"/>						
+							</auxhead>
+							<columns>
+								<column align="center" width="300px"><label value="Student Name"></label></column>
+								<column align="center"><label value="Country"></label></column>
+								<column align="center" width="300px"><label value="Program"></label></column>								
+							</columns>
+							
+							<rows>
+							<template name="model">
+								<row align="center">
+									<label value="${each.fullName}"></label>								
+									<label value="${each.country}"></label>
+									<label value="${each.program.programId} - ${each.program.programDesc}"></label>	
+								</row>	
+							</template>																	
+							</rows>																				
+						</grid>
+					</hlayout>
+					
+					<div id="noResultBlock" visible="false">
+						<label value="No Matrix No Found!"></label>					
+					</div>
+					
+					<div id="searchResultBlock" visible="false">
+						<vlayout>
+							<listbox id="creditTransferredListBox" emptyMessage="No credit transferred found">							
+								<listhead>
+									<listheader label="Code"/>
+									<listheader label="Course"  width="700px"/>
+									<listheader label="Credit Course"/>
+									<listheader label="Grade"/>
+								</listhead>
+								<template name="model:group">					
+									<listitem>
+										<listcell style="line-height:10px" span="4"><label value="${each}" style="color:red"/></listcell>
+									</listitem>
+								</template>
+								<template name="model">
+									<listitem>									
+										<listcell style="line-height:10px"><label value="${each.transcriptId.courseId}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseDesc}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseCredit}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseGrade}"/></listcell>									
+									</listitem>
+								</template>
+								<template name="model:groupfoot">
+									<listitem>																			
+										<listcell span="2" style="text-align:right" >
+											<label value="${each}" style="font-weight:bold"/>
+										</listcell>	
+										<listcell></listcell>
+										<listcell></listcell>	
+									</listitem>
+								</template>
+							</listbox>
+							
+							<!-- showing results of credit exempted -->
+							<listbox id="creditExemptedListBox" emptyMessage="No credit exempted found">	
+								<listhead>
+									<listheader/>
+									<listheader width="700px"/>
+									<listheader/>
+									<listheader/>
+								</listhead>			
+								<template name="model:group">					
+									<listitem>
+										<listcell style="line-height:10px" span="4"><label value="${each}" style="color:red"/></listcell>
+									</listitem>
+								</template>
+								<template name="model">
+									<listitem>									
+										<listcell style="line-height:10px"><label value="${each.transcriptId.courseId}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseDesc}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseCredit}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseGrade}"/></listcell>									
+									</listitem>
+								</template>
+								<template name="model:groupfoot">
+									<listitem>																			
+										<listcell span="2" style="text-align:right" >
+											<label value="${each}" style="font-weight:bold"/>
+										</listcell>	
+										<listcell></listcell>
+										<listcell></listcell>	
+									</listitem>
+								</template>				
+							</listbox>
+							
+							<!-- showing results per semester -->
+							<listbox id="semResultListBox" emptyMessage="No semester result found">
+								<listhead>
+									<listheader/>
+									<listheader width="700px"/>
+									<listheader/>
+									<listheader/>
+								</listhead>
+								<template name="model:group">
+									<listitem>
+										<listcell span="4" style="line-height:10px"><label value="${each}" style="color:red"/></listcell>
+									</listitem>
+								</template>
+								<template name="model">
+									<listitem>														
+										<listcell style="line-height:10px"><label value="${each.transcriptId.courseId}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseDesc}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseCredit}"/></listcell>
+										<listcell style="line-height:10px"><label value="${each.courseGrade}"/></listcell>									
+									</listitem>
+								</template>								 
+								<template name="model:groupfoot">
+									<listitem>																			
+										<listcell span="2" style="text-align:right" >
+											<label value="${each}" style="font-weight:bold"/>
+										</listcell>	
+										<listcell></listcell>
+										<listcell></listcell>	
+									</listitem>
+								</template>	 						
+							</listbox>							
+						</vlayout>	
+					</div>			
+				</vlayout>					
+			</center>						
+		</borderlayout>
+	</window>

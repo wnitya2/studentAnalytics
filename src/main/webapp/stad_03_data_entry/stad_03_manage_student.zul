@@ -1,0 +1,119 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="win" apply="my.ais.controller.studentManagement.ManageStudentController" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:visible" >
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1" vflex="1">
+				<vlayout>
+					<hbox align="center" hflex="1" sclass="todo-box"> 
+						<button id="addStudentBtn" image="/img/icon/plus.png" width="36px"/> Add Student						
+					</hbox>	
+					
+					<grid id="searchCategory" height="170px" hflex="1">	
+						<auxhead>
+							<auxheader label="Search Category" colspan="6"/>
+						</auxhead>		
+						<columns>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+							<column/>
+						</columns>					
+						<rows>		
+							<row>
+								<label value="Status" hflex="1"/>
+								<combobox id="statusCombobox" model="${win$composer.statusModel}"
+				                    autodrop="true" hflex="1">
+				                    <template name="model">
+				                        <comboitem label="${each}" />
+				                    </template>
+				                </combobox>					           					                	                
+				                
+				                <label value="Program" hflex="1"/>
+								<combobox id="programCombobox" autodrop="true" hflex="1">
+				                    <template name="model">
+				                        <comboitem label="${each.programId}-${each.programDesc}"/>
+				                    </template>
+				                </combobox>
+				                
+								<label value="Matrix No" hflex="1"/>
+								<textbox id="matrixBox"  hflex="1"/>											
+							</row>
+							<row>
+								<label value="Level" hflex="1"/>
+								<combobox id="levelCombobox" model="${win$composer.levelModel}"
+				                    autodrop="true" hflex="1">
+				                    <template name="model">
+				                        <comboitem label="${each}" />
+				                    </template>
+				                </combobox>
+				                
+				                <label value="Country" hflex="1"/>
+								<combobox id="countryCombobox" model="${win$composer.countryModel}"
+				                    autodrop="true" hflex="1">
+				                    <template name="model">
+				                        <comboitem label="${each}" />
+				                    </template>
+				                </combobox>           
+				                	
+								
+								<label value="Student Name" hflex="1"/>
+								<textbox id="studentNameBox" hflex="1"/>																	
+							</row>
+							<row>
+								<label value="Mode" hflex="1"/>
+								<combobox id="modeCombobox" model="${win$composer.modeModel}"
+				                    autodrop="true" hflex="1">
+				                    <template name="model">
+				                        <comboitem label="${each}" />
+				                    </template>
+				                </combobox>
+				                
+				                <label value="Sem Enrolment" hflex="1"/>
+								<textbox id="enrolBox" hflex="1"/>	
+								
+								<label></label>
+								<label></label>					                		
+							</row>		
+							<row>
+								<label value="Graduated Year" hflex="1"/>
+								<textbox id="gradYearBox" hflex="1" />
+								<hlayout>
+									<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+									<button id="searchButton" label="Search" image="/img/icon/search.png"/>						 								
+								</hlayout>		
+								<label/><label/><label/>			 	
+							</row>	
+						</rows>							
+					</grid>										
+										
+					<div id="searchResultBlock" visible="false">						
+						<listbox id="studentListBox" emptyMessage="No student found in the result" 
+							vflex="1"  mold="paging" pageSize="20" pagingPosition="top">
+							<listhead>
+								<listheader label="No" width="30px"/>
+								<listheader label="Matrix No" width="75px" sort="auto(matrixId)"/>								
+								<listheader label="Student Name" sort="auto(fullName)"/>
+								<listheader label="Action" align="center"/>
+							</listhead>
+							<template name="model">
+								<listitem>
+									<custom-attributes scope="page" total="${forEachStatus.end}"/>
+									<listcell label="${forEachStatus.index+1}" style="font-size:x-small"/>
+									<listcell label="${each.matrixId}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.fullName}" hflex="1" style="font-size:x-small" />
+									<listcell style="text-align:center">
+										<button forward="studentListBox.onDetail" image="/img/icon/info_16px.png" width="36px" tooltiptext="View Detail"/>
+										<button forward="studentListBox.onUpdate" image="/img/icon/write_16px.png" width="36px" tooltiptext="Update Detail"/>
+										<button id="" image="/img/icon/pretranscript_16px.png" width="36px" tooltiptext="Update Result"/>
+										<button forward="studentListBox.onDelete" image="/img/icon/cross.png" width="36px" tooltiptext="Delete"/>
+									</listcell>	
+								</listitem>
+							</template>
+						</listbox>									
+					</div>				
+				</vlayout>				
+			</center>				
+		</borderlayout>
+	</window>

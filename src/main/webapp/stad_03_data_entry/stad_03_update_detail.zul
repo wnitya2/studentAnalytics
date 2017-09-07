@@ -1,0 +1,116 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<!-- TODO -->
+<window id="modalDialog" title="Update Student Detail" border="normal" width="700px"
+    apply="my.ais.controller.studentManagement.UpdateDetailStudentController"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp">
+        
+    <grid id="studentDetailGrid">
+        <columns>
+            <column width="150px"/>
+            <column/>               
+        </columns>
+        <rows>
+            <row>
+                <label value="Matrix No"/>
+                <label id="matrixBox" value="@{modalDialog$composer.student.matrixId}"/>
+            </row> 
+            <row>
+                <label value="IC No"/>
+                <textbox id="icBox" value="@{modalDialog$composer.student.ic}" constraint="no empty: Required"/>
+            </row>              
+            <row>
+                <label value="Student Name"/>
+                <textbox id="studentNameBox" value="@{modalDialog$composer.student.fullName}" hflex="1"  constraint="no empty: Required"/>
+            </row> 
+            <row>
+               <label value="Status"/>
+               <combobox id="statusCombobox" model="${modalDialog$composer.statusModel}" value="@{modalDialog$composer.student.statusDesc}"              		
+               	    autodrop="true" hflex="1" constraint="no empty: Required">
+	                <template name="model">
+	                	<comboitem label="${each}" />
+	                </template>
+	           </combobox>
+            </row>   
+            <row id="gradYearRow" visible="false">
+                <label value="Graduated Year"/>
+                <textbox id="gradYearBox" value="@{modalDialog$composer.student.gradYear}" hflex="1"/>
+            </row>
+            <row>
+                <label value="Enrolment Date"/>
+                <hlayout>
+                	 <datebox id="enrolDateBox" format="yyyy/MM/dd"/> <!-- value is formatted in controller -->
+                	 <label value="yyyy/MM/dd"/>
+                </hlayout>                
+            </row>
+            <row>
+                <label value="Sem Enrolment"/>
+                <textbox id="enrolSemBox" value="@{modalDialog$composer.student.enrolmentSem}" constraint="no empty: Required"/>
+            </row>
+            <row>
+                <label value="Current Sem"/>  <!-- value is formatted in controller -->
+                <hlayout>
+                	<textbox id="currentSem1Box" width="30px" constraint="no empty: Required"/>
+                	/
+                	<textbox id="currentSem2Box" width="30px" constraint="no empty: Required"/>
+                </hlayout>                
+            </row>
+            <row>
+                <label value="Course Type"/>
+                <combobox id="courseTypeCombobox" model="${modalDialog$composer.courseTypeModel}" value="@{modalDialog$composer.student.courseType}"
+                	autodrop="true" hflex="1" constraint="no empty: Required">
+					<template name="model">
+						<comboitem label="${each}"/>
+	                </template>
+	            </combobox>
+            </row>
+            <row>
+                <label value="Mode" hflex="1"/>
+               	<combobox id="modeCombobox" model="${modalDialog$composer.modeModel}" value="@{modalDialog$composer.student.mode}"
+               		autodrop="true" hflex="1">
+				    <template name="model">
+						<comboitem label="${each}" />
+				    </template>
+				</combobox>
+            </row>
+            <row>
+                <label value="Program" hflex="1"/>
+               	<combobox id="programCombobox" autodrop="true" hflex="1" constraint="no empty: Required"> <!-- value is formatted in controller -->
+				    <template name="model">
+						<comboitem label="${each.programId}-${each.programDesc}" />
+				    </template>
+				</combobox>
+            </row>
+            <row>
+                <label value="Country" hflex="1"/>
+               	<combobox id="countryCombobox" model="${modalDialog$composer.countryModel}" value="@{modalDialog$composer.student.country}"
+               		autodrop="true" hflex="1" constraint="no empty: Required">
+				    <template name="model">
+						<comboitem label="${each}" />
+				    </template>
+				</combobox>
+            </row>
+            <row>
+                <label value="Email"/>
+                <textbox id="emailBox" width="300px" value="@{modalDialog$composer.student.email}"/>
+            </row>
+            <row>
+                <label value="Contact No"/>
+                <textbox id="telBox" value="@{modalDialog$composer.student.tel}"/>
+            </row>            
+            <row>
+                <label/>
+                <hlayout>
+                	<button id="updateBtn" label="Update"/>               	 	
+                </hlayout>               
+            </row>         
+        </rows>
+    </grid>  
+</window>

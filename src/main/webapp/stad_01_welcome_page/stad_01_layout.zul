@@ -1,0 +1,27 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<div apply="my.ais.controller.welcome.WelcomeController">
+<vbox vflex="1" hflex="1">
+	<html>
+		<style>
+		p.ex {		   
+		    margin: 50px 150px 20px 80px;
+		    font-family: "Times New Roman", Times, serif;
+		    font-size: 16px;
+		    line-height: 100%;
+		    color: gray;
+		}
+		</style>		
+		
+		<p class="ex">
+			Student Analytics Dashboard is a web based application designed specifically for Advanced Informatics School <br/>
+			for the purpose of Student information reporting, progress tracking, and data analytics.<br/><br/>		
+		</p>			
+	</html>
+	
+	<vbox vflex="1" hflex="1" align="center" pack="center">
+		<button id="devBtn" label="Software development info" />
+		<button id="authorBtn" label="Author info" />		
+		<image src="/img/logo2.png" />
+	</vbox>	
+</vbox>
+</div>

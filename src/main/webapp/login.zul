@@ -1,0 +1,36 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<!-- it is a login page, no authentication protection and use anonymous template -->
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/layout/template-anonymous.zul"?>
+<zk>
+	<hbox self="@define(content)" vflex="1" hflex="1" align="center"
+		pack="center" spacing="20px"  style="background-image: url('img/login_bg.png')">
+		<vlayout style="background-color: #cccccc">
+			<window id="loginWin"
+				apply="my.ais.controller.authentication.LoginController"
+				title="Login" border="normal" hflex="min" vflex="1">
+				<vbox hflex="min" align="center">
+					<grid hflex="min">
+						<columns>
+							<column hflex="min" vflex="1" align="right" />
+							<column />
+						</columns>
+						<rows>
+							<row>
+								Username :
+								<textbox id="username" width="200px" />
+							</row>
+							<row>
+								Password :
+								<textbox id="password" type="password"
+									width="200px" />
+							</row>
+						</rows>
+					</grid>
+					<label id="message" sclass="warn" value="&#160;" />
+					<button id="login" label="Login" />
+					
+				</vbox>
+			</window>			
+		</vlayout>
+	</hbox>
+</zk>

@@ -1,0 +1,17 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>		
+<tabbox id="tb" orient="left" vflex="1">
+	<tabs width="100px">
+		<tab id="byGeneralTab" 	label="General"/>
+    	<tab id="byCountryTab" 	label="By Country"/>
+        <tab id="byLevelTab" 	label="By Level" />
+        <tab id="byProgramTab" 	label="By Program" />
+        <!-- <tab id="byModeTab" 	label="By Mode" /> -->
+	</tabs>
+	<tabpanels>
+		<tabpanel><include src="/stad_06_data_analytics/stad_06_student_info_analysis_general.zul"/></tabpanel>
+		<tabpanel><include src="/stad_06_data_analytics/stad_06_student_info_analysis_country.zul"/></tabpanel>
+        <tabpanel><include src="/stad_06_data_analytics/stad_06_student_info_analysis_level.zul"/></tabpanel>
+        <tabpanel><include src="/stad_06_data_analytics/stad_06_student_info_analysis_program.zul"/></tabpanel>
+       <!--  <tabpanel><include src="/stad_06_data_analytics/stad_06_student_info_analysis_mode.zul"/></tabpanel> -->
+    </tabpanels>
+</tabbox>

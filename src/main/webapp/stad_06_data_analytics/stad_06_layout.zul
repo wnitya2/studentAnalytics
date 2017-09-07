@@ -1,0 +1,38 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<zk choose="">
+    <zk when="${sessionScope.userCredential.dbRole != 'Academic Admin' and sessionScope.userCredential.dbRole != 'Viewer'}">    
+    	<vlayout>
+    		<vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+    			<label value="Access Denied."/>
+    			<label value="This feature is only applicable for users with Academic Admin and Viewer role."/>
+				<image src="/img/access_denied.jpg" />			
+			</vbox>    		
+    	</vlayout>    	
+    </zk>
+    <zk><!-- default -->
+    	<tabbox id="tb" vflex="1" style="padding-top: 5px">
+		    <tabs id="tabs">
+		        <tab id="studentInfoAnalysis" label="Student Information Analysis" image="/img/icon/student_analytics_31px.png"/>     
+		        <tab id="studentPerformanceAnalysis" label="Student Academic Performance Analysis" image="/img/icon/academic_analytics_31px.png" />     
+		        <!-- <tab id="researchStudentAnalysis" label="Research Student Analysis" image="/img/icon/research_analytics_31px.png"/> -->        
+		    </tabs>
+		    <tabpanels>
+		        <tabpanel>		
+		        	<include src="/stad_06_data_analytics/stad_06_student_info_analysis.zul"/>
+		        </tabpanel>
+		        <tabpanel>
+		        	<include src="/stad_06_data_analytics/stad_06_student_academic_analysis.zul"/>
+		        </tabpanel>  
+		        <!-- <tabpanel>
+		        	<include src="/stad_06_data_analytics/stad_06_research_student_analysis.zul"/>
+		        </tabpanel>   -->
+		    </tabpanels>
+		</tabbox>
+    </zk>
+</zk>

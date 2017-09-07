@@ -1,0 +1,163 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="win" apply="my.ais.controller.reporting.StudentInfoReportController" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:visible" >
+		<!-- <caption src="/img/student.png" sclass="fn-caption" label="Student Information"/> -->
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1" vflex="1">
+				<vlayout>
+					<hlayout hflex="1">
+						<grid id="searchCategory" height="170px" hflex="1">	
+							<auxhead>
+								<auxheader label="Search Category" colspan="6"/>
+							</auxhead>		
+							<columns>
+								<column/>
+								<column/>
+								<column/>
+								<column/>
+								<column/>
+								<column/>
+							</columns>					
+							<rows>		
+								<row>
+									<label value="Status" hflex="1"/>
+									<combobox id="statusCombobox" model="${win$composer.statusModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>					           					                	                
+					                
+					                <label value="Program" hflex="1"/>
+									<combobox id="programCombobox" autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each.programId}-${each.programDesc}"/>
+					                    </template>
+					                </combobox>
+					                
+					                <label value="Sem Enrolment" hflex="1"/>
+									<textbox id="enrolBox" hflex="1"/>			
+								</row>
+								<row>
+									<label value="Level" hflex="1"/>
+									<combobox id="levelCombobox" model="${win$composer.levelModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+					                
+					                <label value="Course Type" hflex="1"/>
+									<combobox id="courseTypeCombobox" model="${win$composer.courseTypeModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+					                
+					                <label value="Matrix No" hflex="1"/>
+									<textbox id="matrixBox"  hflex="1"/>						
+								</row>
+								<row>
+									<label value="Country" hflex="1"/>
+									<combobox id="countryCombobox" model="${win$composer.countryModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>   
+					                
+									<label value="Mode" hflex="1"/>
+									<combobox id="modeCombobox" model="${win$composer.modeModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+					                
+					              	<label value="Student Name" hflex="1"/>
+									<textbox id="studentNameBox" hflex="1"/>	 		
+								</row>		
+								<row>
+									<label value="Graduated Year" hflex="1"/>
+									<textbox id="gradYearBox" hflex="1" />
+									<hlayout hflex="1">
+										<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+										<button id="searchButton" label="Search" image="/img/icon/search.png"/>						 								
+									</hlayout>		
+									<label/><label/><label/>			 	
+								</row>	
+							</rows>							
+						</grid>
+						<div id="exportBlock" visible="false" width="200px" vflex="1">
+							<grid vflex="1">
+								<columns>
+									<column align="left" hflex="min"/>
+									<column/>
+								</columns>
+								<rows>
+									<row spans="2" sclass="row-title row-header">
+										<label>Export Options</label>
+									</row>
+									<row>
+										<label value="Save as"/>	
+										<button id="pdfButton" label="PDF" image="/img/icon/pdf_17px.png"/>														
+									</row>
+									<row>
+										<label/>
+										<button id="xlsButton" label="XLS" image="/img/icon/xls_17px.png"/>													
+									</row>
+									<!-- <row>
+										<label/>
+										<button id="csvButton" label="CSV" image="/img/icon/csv_17px.png"/>			
+									</row> -->						
+								</rows>
+							</grid>		
+						</div>				
+					</hlayout>
+						
+					<div id="searchResultBlock" visible="false">						
+						<listbox id="studentListBox" emptyMessage="No student found in the result" 
+							vflex="1"  mold="paging" pageSize="20" pagingPosition="top">
+							<listhead>
+								<listheader label="No" width="30px"/>
+								<listheader label="Matrix No" width="75px" sort="auto(matrixId)"/>
+								<listheader label="IC No" width="95px" sort="auto(ic)"/>
+								<listheader label="Student Name" width="200px" sort="auto(fullName)"/>
+								<listheader label="Status" width="80px" sort="auto(status.statusDesc)"/>
+								<listheader label="Current Sem" width="85px" sort="auto(currentSem)"/>
+								<listheader label="Type/Mode" width="80px" sort="auto(mode)"/>
+								<listheader label="Program" hflex="1" sort="auto(program.programId)"/>
+								<listheader label="Country" width="80px" sort="auto(country)"/>
+								<listheader label="Sem Enrolment" width="100px" sort="auto(enrolmentSem)"/>
+								<listheader label="Email" width="170px" sort="auto(email)"/>
+								<listheader label="Contact No" width="100px" sort="auto(tel)"/>
+							</listhead>
+							<template name="model">
+								<listitem>
+									<custom-attributes scope="page" total="${forEachStatus.end}"/>
+									<listcell label="${forEachStatus.index+1}" style="font-size:x-small"></listcell>
+									<listcell label="${each.matrixId}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.ic}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.fullName}" hflex="1" style="font-size:x-small" />
+									<listcell label="${each.status.statusDesc} ${each.gradYear}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.currentSem}" hflex="1" style="font-size:x-small;text-align:center"/>
+									<listcell label="${each.courseType} ${each.mode}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.program.programId}-${each.program.programDesc}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.country}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.enrolmentSem}" hflex="1" style="font-size:x-small;text-align:center"/>
+									<listcell label="${each.email}" hflex="1" style="font-size:x-small"/>
+									<listcell label="${each.tel}" hflex="1" style="font-size:x-small"/>
+								</listitem>
+							</template>
+						</listbox>
+						<!-- <vlayout>
+							TEST
+							<label value="${pageScope.total}"/>
+							<label value="componentScope.get(&quot;total&quot;)"></label>
+						</vlayout> -->				
+					</div>				
+				</vlayout>				
+			</center>				
+		</borderlayout>
+	</window>

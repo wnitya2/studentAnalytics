@@ -1,0 +1,9 @@
+<div hflex="1" vflex="1" sclass="banner" style="background-image: url('img/banner_desc.png');background-repeat: no-repeat">
+	<hbox hflex="1" vflex="1" align="center">		
+		<hbox apply="my.ais.authentication.controller.LogoutController" 
+			hflex="1" vflex="1" pack="end" align="end">
+			<label value="${sessionScope.userCredential.name}" if="${not sessionScope.userCredential.anonymous}"/>
+			<label id="logout" value="Logout" if="${not sessionScope.userCredential.anonymous}" sclass="logout"/>
+		</hbox>
+	</hbox>
+</div>

@@ -1,0 +1,117 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<!-- TODO -->
+<window id="modalDialog" title="Add Student" border="normal" width="700px"
+    apply="my.ais.controller.studentManagement.AddStudentController"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp">
+        
+    <grid id="studentDetailGrid">
+        <columns>
+            <column width="150px"/>
+            <column/>               
+        </columns>
+        <rows>
+            <row>
+                <label value="Matrix No"/>
+                <textbox id="matrixBox" constraint="no empty: Required"/>
+            </row> 
+            <row>
+                <label value="IC No"/>
+                <textbox id="icBox" constraint="no empty: Required"/>
+            </row>              
+            <row>
+                <label value="Student Name"/>
+                <textbox id="studentNameBox" hflex="1" constraint="no empty: Required"/>
+            </row> 
+            <row>
+               <label value="Status"/>
+               <combobox id="statusCombobox" model="${modalDialog$composer.statusModel}" constraint="no empty: Required"               		
+               	    autodrop="true" hflex="1">
+	                <template name="model">
+	                	<comboitem label="${each}" />
+	                </template>
+	           </combobox>
+            </row>   
+            <row id="gradYearRow" visible="false">
+                <label value="Graduated Year"/>
+                <textbox id="gradYearBox" hflex="1"/>
+            </row>
+            <row>
+                <label value="Enrolment Date"/>
+                <hlayout>
+                	<datebox id="enrolDateBox" format="yyyy/MM/dd" constraint="no empty: Required"/>
+                	<label value="yyyy/MM/dd"/>	
+                </hlayout>                
+            </row>
+            <row>
+                <label value="Sem Enrolment"/>
+                <textbox id="enrolSemBox" constraint="no empty: Required"/>
+            </row>
+            <row>
+                <label value="Current Sem"/>
+                <hlayout>
+                	<textbox id="currentSem1Box" width="30px" constraint="no empty: Required"/>
+                	/
+                	<textbox id="currentSem2Box" width="30px" constraint="no empty: Required"/>
+                </hlayout>                
+            </row>
+            <row>
+                <label value="Course Type"/>
+                <combobox id="courseTypeCombobox" model="${modalDialog$composer.courseTypeModel}" constraint="no empty: Required"
+                	autodrop="true" hflex="1">
+					<template name="model">
+						<comboitem label="${each}"/>
+	                </template>
+	            </combobox>
+            </row>
+            <row>
+                <label value="Mode" hflex="1"/>
+               	<combobox id="modeCombobox" model="${modalDialog$composer.modeModel}"
+               		autodrop="true" hflex="1">
+				    <template name="model">
+						<comboitem label="${each}" />
+				    </template>
+				</combobox>
+            </row>
+            <row>
+                <label value="Program" hflex="1"/>
+               	<combobox id="programCombobox" autodrop="true" hflex="1" constraint="no empty: Required">
+				    <template name="model">
+						<comboitem label="${each.programId}-${each.programDesc}" />
+				    </template>
+				</combobox>
+            </row>
+            <row>
+                <label value="Country" hflex="1"/>
+               	<combobox id="countryCombobox" model="${modalDialog$composer.countryModel}" constraint="no empty: Required"
+               		autodrop="true" hflex="1">
+				    <template name="model">
+						<comboitem label="${each}" />
+				    </template>
+				</combobox>
+            </row>
+            <row>
+                <label value="Email"/>
+                <textbox id="emailBox" width="300px"/>
+            </row>
+            <row>
+                <label value="Contact No"/>
+                <textbox id="telBox"/>
+            </row>            
+            <row>
+                <label/>
+                <hlayout>
+                	<button id="saveBtn" label="Save"/>
+               	 	<button id="resetBtn" label="Reset"/>
+                </hlayout>               
+            </row>         
+        </rows>
+    </grid>  
+</window>

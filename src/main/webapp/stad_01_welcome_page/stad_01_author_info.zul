@@ -1,0 +1,23 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<window id="modalDialog" title="About Author" border="normal" width="500px" position="center,center" closable="true" action="show: slideDown;hide: slideUp">
+
+    <grid id="infoGrid">
+        <columns>
+            <column width="370px"/>
+            <column/>               
+        </columns>
+        <rows>
+        	<row>        		
+	        	<vlayout>
+	        		<label value="This web application is developed by Nitya Wijayanti (Master of Software Engineering student) during her 
+                			industial attachment period in AIS under supervision from Dr. Suriayati Chuprat and Mr. Othman Yusop."/>
+                	<label/>
+                	<label value="Contact author: wijayanti.nitya@gmail.com " style="font-weight: bold"/>
+	        	</vlayout>  
+        		<image src="/img/nitya.png"/>         
+            </row>                      
+        </rows>             
+    </grid>      
+</window>

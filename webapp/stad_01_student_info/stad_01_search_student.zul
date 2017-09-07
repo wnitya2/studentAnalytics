@@ -1,0 +1,152 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="win" apply="my.ais.studentInfo.controller.StudentSearchController" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:auto" >
+		<!-- <caption src="/img/student.png" sclass="fn-caption" label="Student Information"/> -->
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1" vflex="1">
+				<vlayout>
+					<hlayout hflex="1">
+						<grid id="searchCategory" height="170px" hflex="1">	
+							<auxhead>
+								<auxheader label="Search Category" colspan="6"/>
+							</auxhead>		
+							<columns>
+								<column/>
+								<column/>
+								<column/>
+								<column/>
+								<column/>
+								<column/>
+							</columns>					
+							<rows>		
+								<row>
+									<label value="Status" hflex="1"/>
+									<combobox id="statusCombobox" model="${win$composer.statusModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>		
+					                
+					                <label value="Program" hflex="1"/>
+									<combobox id="programCombobox" model="${win$composer.programModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>						                	                
+					                
+									<label value="Matrix No" hflex="1"/>
+									<textbox id="matrixBox"  hflex="1"/>											
+								</row>
+								<row>
+									<label value="Level" hflex="1"/>
+									<combobox id="levelCombobox" model="${win$composer.levelModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+					                
+					                <label value="Country" hflex="1"/>
+									<combobox id="countryCombobox" model="${win$composer.countryModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>           
+					                	
+									
+									<label value="Student Name" hflex="1"/>
+									<textbox id="studentNameBox" hflex="1"/>																	
+								</row>
+								<row>
+									<label value="Mode" hflex="1"/>
+									<combobox id="modeCombobox" model="${win$composer.modeModel}"
+					                    autodrop="true" hflex="1">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+					                
+					                <label value="Sem Enrolment" hflex="1"/>
+									<textbox id="enrolBox" hflex="1"/>	
+									
+									<label></label>
+									<label></label>					                		
+								</row>		
+								<row spans="6" align="center">
+									<hlayout>
+										<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+										<button id="searchButton" label="Search" image="/img/icon/search.png"/>						 								
+									</hlayout>					 	
+								</row>	
+							</rows>							
+						</grid>
+						<div id="exportBlock" visible="false" width="200px" vflex="1">
+							<grid vflex="1">
+								<columns>
+									<column align="left" hflex="min"/>
+									<column/>
+								</columns>
+								<rows>
+									<row spans="2" sclass="row-title row-header">
+										<label>Export Options</label>
+									</row>
+									<row>
+										<label value="Save as"/>	
+										<button id="pdfButton" label="PDF" image="/img/icon/pdf_17px.png"/>														
+									</row>
+									<row>
+										<label/>
+										<button id="xlsButton" label="XLS" image="/img/icon/xls_17px.png"/>													
+									</row>
+									<row>
+										<label/>
+										<button id="csvButton" label="CSV" image="/img/icon/csv_17px.png"/>			
+									</row>						
+								</rows>
+							</grid>		
+						</div>				
+					</hlayout>
+						
+					<div id="searchResultBlock" visible="false">						
+						<listbox id="studentListBox" emptyMessage="No student found in the result" 
+							vflex="1"  mold="paging" pageSize="20" pagingPosition="top">
+							<listhead>
+								<listheader label="No" width="50px"/>
+								<listheader label="Matrix No" width="100px" sort="auto(MATRIX)"/>
+								<listheader label="Student Name" hflex="1" sort="auto(FULLNAME)"/>
+								<listheader label="Status" hflex="1" sort="auto(STATUS)"/>
+								<listheader label="Level" width="100px" sort="auto(LEVEL)"/>
+								<listheader label="Mode" hflex="1" sort="auto(MODE)"/>
+								<listheader label="Program" width="300px" sort="auto(PROGRAM)"/>
+								<listheader label="Country" hflex="1" sort="auto(COUNTRY)"/>
+								<listheader label="Sem Enrolment" width="100px" sort="auto(ENROLMENT_SEM)"/>
+							</listhead>
+							<template name="model">
+								<listitem>
+									<custom-attributes scope="page" total="${forEachStatus.end}"/>
+									<!-- <listcell label="${total}" hflex="1"/> -->
+									<listcell label="${forEachStatus.index+1}"></listcell>
+									<listcell label="${each.MATRIX}" hflex="1"/>
+									<listcell label="${each.FULLNAME}" hflex="1"/>
+									<listcell label="${each.STATUS}" hflex="1"/>
+									<listcell label="${each.LEVEL}" hflex="1"/>
+									<listcell label="${each.MODE}" hflex="1"/>
+									<listcell label="${each.PROGRAM}" hflex="1"/>
+									<listcell label="${each.COUNTRY}" hflex="1"/>
+									<listcell label="${each.ENROLMENT_SEM}" hflex="1"/>
+								</listitem>
+							</template>
+						</listbox>
+						<!-- <vlayout>
+							TEST
+							<label value="${pageScope.total}"/>
+							<label value="componentScope.get(&quot;total&quot;)"></label>
+						</vlayout> -->				
+					</div>				
+				</vlayout>				
+			</center>				
+		</borderlayout>
+	</window>

@@ -1,0 +1,51 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<window id="modalDialog" title="Software Development Information" border="normal" width="500px" position="center,center" closable="true" action="show: slideDown;hide: slideUp">
+
+    <grid id="infoGrid">
+        <columns>
+            <column width="200px"/>
+            <column hflex="1"/>               
+        </columns>
+        <rows>
+        	<row>
+                <label value="Development Time" style="font-weight: bold"/>
+                <label value="January - May 2016"/>
+            </row>
+            <row>
+                <label value="Web application framework" style="font-weight: bold"/>
+                <label value="ZK Framework 8.0.0 CE, Spring, Hibernate"/>
+            </row>
+            <row>
+                <label value="Back-end programming language" style="font-weight: bold"/>
+                <label value="Java version 1.8.0_73"/>
+            </row> 
+            <row>
+                <label value="Database" style="font-weight: bold"/>
+                <label value="MySQL"/>
+            </row> 
+            <row>
+                <label value="Web application server" style="font-weight: bold"/>
+                <label value="Apache Tomcat v7.0"/>
+            </row>
+            <row>
+                <label value="Chart UI" style="font-weight: bold"/>
+                <label value="JFree Chart"/>
+            </row>  
+            <row>
+                <label value="Reporting tool" style="font-weight: bold"/>
+                <label value="Jasper Report 4.5.1"/>
+            </row>    
+            <row>
+                <label value="IDE" style="font-weight: bold"/>
+                <label value="Eclipse Luna"/>
+            </row>        
+            <row>
+                <label value="Design pattern" style="font-weight: bold"/>
+                <label value="MVC (Model View Controller)"/>
+            </row>             
+        </rows>             
+    </grid>  
+    
+</window>

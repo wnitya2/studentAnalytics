@@ -1,0 +1,84 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<!-- TODO -->
+<window id="modalDialog" title="View Student Detail" border="normal" width="700px"
+    apply="my.ais.controller.studentManagement.ViewDetailStudentController"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp">
+        
+    <grid id="studentDetailGrid">
+        <columns>
+            <column width="200px"/>
+            <column/>               
+        </columns>
+        <rows>
+            <row>
+                <label value="Matrix No" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.matrixId}"/>
+            </row> 
+            <row>
+                <label value="IC No" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.ic}"/>
+            </row>              
+            <row>
+                <label value="Student Name" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.fullName}"/>
+            </row> 
+            <row>
+               <label value="Status" style="font-weight: bold"/>
+               <hlayout>
+               		<label value="@{modalDialog$composer.student.statusDesc}"/>
+               		<label value=" @{modalDialog$composer.student.gradYear}"></label>
+               </hlayout>                
+            </row>   
+            <row>
+                <label value="Enrolment Date (yyyy/MM/dd)" style="font-weight: bold"/>
+                <label id="enrolmentDateLabel"/> <!-- value is formatted in controller -->
+            </row>
+            <row>
+                <label value="Sem Enrolment" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.enrolmentSem}"/>
+            </row>
+            <row>
+                <label value="Current Sem" style="font-weight: bold"/>
+                <hlayout>
+                	<label value="@{modalDialog$composer.student.currentSem}"/>
+                </hlayout>                
+            </row>
+            <row>
+                <label value="Course Type" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.courseType}"/>
+            </row>
+            <row>
+                <label value="Mode" style="font-weight: bold"/>
+               	<label value="@{modalDialog$composer.student.mode}"/>
+            </row>
+            <row>
+                <label value="Program" style="font-weight: bold"/>
+                <hlayout>
+                	<label value="@{modalDialog$composer.student.programId}"/>-
+                	<label value="@{modalDialog$composer.student.programDesc}"/>
+                </hlayout>
+               	
+            </row>
+            <row>
+                <label value="Country" style="font-weight: bold"/>
+               	<label value="@{modalDialog$composer.student.country}"/>
+            </row>
+            <row>
+                <label value="Email" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.email}"/>
+            </row>
+            <row>
+                <label value="Contact No" style="font-weight: bold"/>
+                <label value="@{modalDialog$composer.student.tel}"/>
+            </row>                   
+        </rows>
+    </grid>  
+</window>

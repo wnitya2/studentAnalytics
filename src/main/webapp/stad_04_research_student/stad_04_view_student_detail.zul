@@ -1,0 +1,78 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<!-- TODO -->
+<window id="modalDialog" title="Student Details" border="normal" width="1000px"
+    apply="my.ais.controller.studentManagement.StudentViewDetailController"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp">
+        
+    <grid id="studentDetailGrid">
+        <columns>
+            <column width="150px"/>
+            <column hflex="1"/>               
+        </columns>
+        <rows>
+            <row>
+                <label value="Matrix No"/>
+                <label value="@{modalDialog$composer.student.matrixId}"/>
+            </row> 
+            <row>
+                <label value="Student Name"/>
+                <label value="@{modalDialog$composer.student.fullName}"/>
+            </row>              
+            <row>
+                <label value="Country"/>
+                <label value="@{modalDialog$composer.student.country}"/>
+            </row> 
+            <row>
+                <label value="Sem Enrolment"/>
+                <label value="@{modalDialog$composer.student.enrolmentSem}"/>
+            </row>
+            <row>
+                <label value="Current Semester"/>
+                <label value="@{modalDialog$composer.student.currentSem}"/>
+            </row> 
+            <row>
+                <label value="Program"/>
+                <hlayout>
+                	<label value="@{modalDialog$composer.student.program.programId}"/>
+                	-
+                	<label value="@{modalDialog$composer.student.program.programDesc}"/>
+                </hlayout>                
+            </row> 
+            <row>
+                <label value="Research Grade"/>
+                <grid>
+                	<rows>
+                		<row>
+                			<label value="Semester 2015/2016 Session 1"></label>
+                			<label value="Semester 2015/2016 Session 2"></label>
+                			<label value="Semester 2015/2016 Session 3"></label>
+                			<label value="Semester 2015/2016 Session 4"></label>
+                			<label value="Semester 2015/2016 Session 5"></label>
+                			<label value="Semester 2015/2016 Session 6"></label>
+                			<label value="Semester 2015/2016 Session 7"></label>
+                			<label value="Semester 2015/2016 Session 8"></label>
+                		</row>
+                		<row>
+                			<label value="MM"></label>
+                			<label value="GG"></label>
+                			<label value="MM"></label>
+                			<label value="MM"></label>
+                			<label value="MM"></label>
+                			<label value="MM"></label>
+                			<label value="MM"></label>
+                			<label value="MM"></label>
+                		</row>
+                	</rows>
+                </grid>
+            </row>
+        </rows>
+    </grid>  
+</window>

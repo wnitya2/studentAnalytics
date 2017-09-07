@@ -1,0 +1,21 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<zk>
+	<borderlayout hflex="1" vflex="1" apply="my.ais.controller.menu.BookmarkChangeController">
+		<north height="50px" border="normal" >
+			<include src="/layout/banner.zul"/>
+		</north>
+		<west width="260px" border="none" collapsible="true"
+			  splittable="true" minsize="300">
+			<include src="/layout/sidebar.zul"/>
+		</west>
+		<center id="mainContent" autoscroll="true" border="none" self="@insert(content)">
+			
+		</center>
+		<south height="50px" border="none">
+			<include src="/layout/footer.zul"/>
+		</south>	
+	</borderlayout>
+	<div if="${sessionScope.userCredential.anonymous}">
+		Redirect to login page.....
+	</div>	
+</zk>

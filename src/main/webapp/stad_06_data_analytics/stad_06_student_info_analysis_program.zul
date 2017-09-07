@@ -1,0 +1,178 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+<window id="win" apply="my.ais.controller.analytics.StudentInfoAnalysisProgram" 
+	border="normal" vflex="1" hflex="1" contentStyle="overflow:visible" >
+	<radiogroup id="rg1"/>	
+	<radiogroup id="rg2"/>	
+	<radiogroup id="rg3"/>	
+	<borderlayout>			
+		<center autoscroll="true" border="none" hflex="1" vflex="1">
+			<vlayout>
+				<hlayout>															
+					<grid id="countryCategoryBlock" visible="true" height="235px" hflex="1">	
+						<auxhead>
+							<auxheader label="Customization of Data Analysis Based on Program" colspan="4"/>
+						</auxhead>		
+						<columns>
+							<column width="120px"/>
+							<column align="left" width="120px"/>
+							<column align="left" width="170px"/>
+							<column align="left"/>
+						</columns>					
+						<rows>	
+							<row>
+								<label value="Program Indicator"/>
+								<radio id="allPrograms" label="All Programs" radiogroup="rg1"  checked="true"/>	
+								<cell colspan="2" style="color:#636363">
+									<hlayout>
+										<radio id="program" label="Specific Program" radiogroup="rg1"/>
+										<combobox id="programCombobox" autodrop="true" disabled="true">
+						                    <template name="model">
+						                        <comboitem label="${each.programId}-${each.programDesc}"/>
+						                    </template>
+					                	</combobox>
+									</hlayout>		
+								</cell>							
+							</row>	
+							<row>
+								<label value="Country Indicator"/>
+								<radio id="allCountries" label="All Countries" radiogroup="rg2"  checked="true"/>
+								<radio id="localInter" label="Local / International" radiogroup="rg2"/>
+								<hlayout>
+									<radio id="country" label="Specific Country &#160;&#160;" radiogroup="rg2"/>
+									<combobox id="countryCombobox" model="${win$composer.countryModel}"
+					                    autodrop="true" width="250px" disabled="true">
+					                    <template name="model">
+					                        <comboitem label="${each}" />
+					                    </template>
+					                </combobox>
+								</hlayout>										
+							</row>
+							<row>
+								<label value="Time Indicator"/>
+								<radio id="allYear" label="All Year" radiogroup="rg3" checked="true"/>
+								<hlayout>
+									<radio id="specificYear" label="Specific Year" radiogroup="rg3"/>
+									<textbox id="specificYearTextBox" width="52px" disabled="true"/>
+								</hlayout>
+								<hlayout>
+									<radio id="specificSemester" label="Specific Semester" radiogroup="rg3"/>
+									<textbox id="specificSemesterTextBox" width="100px" disabled="true"/>
+								</hlayout>								
+							</row>
+							<row>
+								<label/>
+								<radio id="yearRange" label="Year Range" radiogroup="rg3"/>
+								<cell colspan="2" style="color:#636363">
+									<hlayout>										
+										<textbox id="fromYearTextBox" width="100px" disabled="true"/>
+										<label value="to"/>
+										<textbox id="toYearTextBox" width="100px" disabled="true"/>
+										<label value="e.g. 2013 to 2016"/>
+									</hlayout>
+								</cell>			
+							</row>	
+							<row>
+								<label/>
+								<radio id="semesterRange" label="Semester Range" radiogroup="rg3"/>
+								<cell colspan="2" style="color:#636363">
+									<hlayout>									
+										<textbox id="fromSemTextBox" width="100px" disabled="true"/>
+										<label value="to"/>
+										<textbox id="toSemTextBox" width="100px" disabled="true"/>
+										<label value="e.g. 201320141 to 201520162"/>
+									</hlayout>
+								</cell>
+							</row>						
+							<row>
+								<label/>
+								<cell colspan="3">
+									<hlayout>
+										<button id="generateChartButton" label="Generate Chart" image="/img/icon/pie_chart.png"/>
+										<button id="resetButton" label="Reset" image="/img/icon/reset.png"/>
+									</hlayout>
+								</cell>							
+							</row>
+						</rows>
+					</grid>						
+					<div id="exportBlock" visible="false" width="200px" vflex="1">
+						<grid vflex="1">
+							<columns>
+								<column align="left" hflex="min"/>
+								<column/>
+							</columns>
+							<rows>
+								<row spans="2" sclass="row-title row-header">
+									<label>Export Options</label>
+								</row>
+								<row>
+									<label value="Save as"/>	
+									<button id="pdfButton" label="PDF" image="/img/icon/pdf_17px.png"/>														
+								</row>
+								<row>
+									<label/>
+									<button id="pngButton" label="PNG" image="/img/icon/jpg_17px.jpg"/>													
+								</row>						
+							</rows>
+						</grid>		
+					</div>	
+				</hlayout>
+				<vlayout >
+					<vlayout>
+						<div id="chartBlock1" align="center" visible="false">
+							<image id="chartImage1"></image>					
+						</div>
+						<div id="chartBlock2" align="center" visible="false">
+							<image id="chartImage2"></image>					
+						</div>
+						<div id="chartBlock3" align="center" visible="false">
+							<image id="chartImage3"></image>					
+						</div>
+						<div id="programDescBlock" align="center" visible="false">
+							<image id="programDescImage" src="/img/program_desc.png"></image>					
+						</div>
+					</vlayout>
+					<!-- <div id="programDesc" align="center">					 
+						<grid width="410px">
+							<columns>
+								<column align="left" width="100px"/>
+								<column width="300px"/>
+							</columns>
+							<rows>
+								<row spans="2">
+									<label>Program Description</label>
+								</row>
+								<row>
+									<label value="MANA"/>	
+									<label value="Master of Science (Information Assurance)"/>													
+								</row>
+								<row>
+									<label value="MANN"/>	
+									<label value="Master of Science (Computer System Engineering)"/>													
+								</row>		
+								<row>
+									<label value="MANP"/>	
+									<label value="Master of Software Engineering"/>													
+								</row>
+								<row>
+									<label value="MANQ"/>	
+									<label value="Master of Science (Informatics)"/>													
+								</row><row>
+									<label value="MANG"/>	
+									<label value="Master of Philosophy"/>													
+								</row>
+								<row>
+									<label value="PANP"/>	
+									<label value="Doctor of Software Engineering"/>													
+								</row>		
+								<row>
+									<label value="PANG"/>	
+									<label value="Doctor of Philosophy"/>													
+								</row>		
+							</rows>
+						</grid>
+					</div> -->			
+				</vlayout>				
+			</vlayout>
+		</center>						
+	</borderlayout>
+</window>

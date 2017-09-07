@@ -1,0 +1,38 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>	
+   	<window id="winManageUser" apply="my.ais.controller.userManagement.ManageUserController" 
+		border="normal" vflex="1" hflex="1" contentStyle="overflow:visible" >		
+		<borderlayout>
+			<center autoscroll="true" border="none" hflex="1" vflex="1">
+				<vlayout hflex="1" vflex="1">		
+					<hbox align="center" hflex="1" sclass="todo-box"> 
+						<button	id="createUserBtn" image="/img/icon/plus.png" width="36px"/> Create New User						
+					</hbox>					
+					<div id="userList" visible="true">						
+						<listbox id="userListBox" emptyMessage="No user found in the result" 
+							vflex="1"  mold="paging" pageSize="10" pagingPosition="top">
+							<listhead>
+								<listheader label="No" sort="" width="50px"/>
+								<listheader label="Username" sort="auto(username)"/>
+								<listheader label="Full Name" sort="auto(fullName)"/>
+								<listheader label="Role" sort="auto(role)"/>
+								<listheader label="Action" align="center"/>														
+							</listhead>							
+							<template name="model">
+								<listitem>
+									<custom-attributes scope="page" total="${forEachStatus.end}"/>
+									<listcell label="${forEachStatus.index+1}"></listcell>
+									<listcell label="${each.username}" hflex="1"/>									
+									<listcell label="${each.fullName}" hflex="1"/>
+									<listcell label="${each.role}" hflex="1"/>
+									<listcell style="text-align:center">
+										<button forward="userListBox.onEdit" image="/img/icon/write_16px.png" width="36px"/>
+										<button forward="userListBox.onDelete" image="/img/icon/cross.png" width="36px"/>
+									</listcell>
+								</listitem>
+							</template>
+						</listbox>									
+					</div>				
+				</vlayout>				
+			</center>				
+		</borderlayout>
+	</window>

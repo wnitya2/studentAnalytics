@@ -1,0 +1,49 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="modalDialog" ?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<!-- Under Construction -->
+<!-- <vbox vflex="1" hflex="1" align="center" pack="center" spacing="20px">	
+	<image src="/img/under-construction-picture.gif" />
+</vbox> -->
+
+<!-- TODO -->
+<window id="modalDialog" title="Update User" border="normal" width="500px"
+    apply="my.ais.controller.userManagement.EditUserController"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp">
+        
+    <grid id="userDetailGrid">
+        <columns>
+            <column width="150px"/>
+            <column/>               
+        </columns>
+        <rows>
+            <row>
+                <label value="Username"/>
+                <textbox id="username" value="@{modalDialog$composer.user.username}" readonly="true"/>
+            </row> 
+            <row>
+                <label value="Full Name"/>
+                <textbox id="fullName" value="@{modalDialog$composer.user.fullName}" constraint="no empty: Required"/>
+            </row>              
+            <row>
+                <label value="Role"/>
+                <combobox id="role" autodrop="true" value="@{modalDialog$composer.user.role}" constraint="no empty: Required">
+                	<comboitem label="Academic Admin"/>
+                	<comboitem label="System Admin"/>
+                	<comboitem label="Viewer"/>
+                </combobox>
+            </row> 
+            <row>
+                <label value="Password"/>
+                <textbox id="password" type="password" value="@{modalDialog$composer.user.password}" constraint="no empty: Required"/>
+            </row>   
+            <row>
+                <label/>
+                <hlayout>
+                	<button id="updateBtn" label="Update"/>
+                </hlayout>               
+            </row>         
+        </rows>
+    </grid>  
+</window>
